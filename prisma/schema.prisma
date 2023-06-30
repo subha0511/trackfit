@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Exercise {
+  id        Int     @id @default(autoincrement())
+  title     String  @db.VarChar(255)
+  desc      String? @db.Text()
+  type      String? @db.VarChar(255)
+  bodyPart  String? @db.VarChar(255)
+  equipment String? @db.VarChar(255)
+  rating    Int?    @default(0) @db.SmallInt()
+}
